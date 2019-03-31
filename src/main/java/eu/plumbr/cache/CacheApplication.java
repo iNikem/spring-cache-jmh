@@ -30,7 +30,12 @@ public class CacheApplication {
     }
 
     @Cacheable("time")
-    public long annotationBased(String dummy) {
+    public long annotationBased(String dummy1, String dummy2) {
+      return System.currentTimeMillis();
+    }
+
+    @Cacheable(value = "time", key = "#p0.concat(#p1)")
+    public long annotationWithSpel(String dummy1, String dummy2) {
       return System.currentTimeMillis();
     }
 

@@ -34,7 +34,14 @@ public class CacheBenchmark {
   @BenchmarkMode(Mode.AverageTime)
   @OutputTimeUnit(TimeUnit.MILLISECONDS)
   public long annotationBased() {
-    return service.annotationBased("const");
+    return service.annotationBased("const", "another");
+  }
+
+  @Benchmark
+  @BenchmarkMode(Mode.AverageTime)
+  @OutputTimeUnit(TimeUnit.MILLISECONDS)
+  public long spel() {
+    return service.annotationWithSpel("const", "another");
   }
 
   @Benchmark
